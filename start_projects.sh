@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASE_DIR="/путь/к/директории/с/проектами"
+BASE_DIR="$(pwd)"
 
 PROJECTS=(
   "AdminConstructionAutomation"
