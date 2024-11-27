@@ -4,3 +4,10 @@ CONTAINERS=(
     "constructionautomationreportservice-report_service-1"
     "telegram-log-service"
 )
+
+PROJECTS=(
+  "ConstructionAutomationFront"
+  "ConstructionAutomationApi"
+  "ConstructionAutomation.ReportService"
+  "errorLoggingConstruction"
+)
