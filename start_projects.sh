@@ -27,7 +27,7 @@ start_project() {
   fi
 }
 
-for project in "${PROJECTS[@]}"; do
+for project in "${CONTAINERS[@]}"; do
   PROJECT_DIR="$BASE_DIR/$project"
   
   if [ -d "$PROJECT_DIR" ]; then
