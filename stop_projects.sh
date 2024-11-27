@@ -1,34 +1,21 @@
 #!/bin/bash
 
-BASE_DIR="$(pwd)"
+source "$(dirname "$0")/containers.sh"
 
-PROJECTS=(
-  "AdminConstructionAutomation"
-  "ConstructionAutomationApi"
-  "ConstructionAutomationFront"
-  "ConstructionAutomation.ReportService"
-  "errorLoggingConstruction"
-)
-
-stop_project() {
-  local project_dir="$1"
+stop_and_remove_container() {
+  local container_name="$1"
   
-  if [ -f "$project_dir/docker-compose.yml" ]; then
-    echo "Останавливаем проект: $project_dir"
-    (cd "$project_dir" && docker-compose down)
+  if docker ps -a --format '{{.Names}}' | grep -q "$container_name"; then
+    echo "Останавливаем и удаляем контейнер: $container_name"
+    docker stop "$container_name"
+    docker rm "$container_name"
   else
-    echo "Файл docker-compose.yml не найден в $project_dir. Пропускаем."
+    echo "Контейнер с именем $container_name не найден. Пропускаем."
   fi
 }
 
-for project in "${PROJECTS[@]}"; do
-  PROJECT_DIR="$BASE_DIR/$project"
-  
-  if [ -d "$PROJECT_DIR" ]; then
-    stop_project "$PROJECT_DIR"
-  else
-    echo "Папка $PROJECT_DIR не найдена. Пропускаем."
-  fi
+for container in "${CONTAINERS[@]}"; do
+  stop_and_remove_container "$container"
 done
 
-echo "Все проекты остановлены."
+echo "Все контейнеры обработаны."

@@ -1,11 +1,6 @@
 #!/bin/bash
 
-CONTAINERS=(
-  "telegram-log-service"
-  "constructionautomationreportservice-report_service-1"
-  "constructionautomationapi-backend-1"
-  "telegram-log-service"
-)
+source "$(dirname "$0")/containers.sh"
 
 stop_and_remove_container() {
   local container_name="$1"

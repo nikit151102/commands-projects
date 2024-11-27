@@ -1,16 +1,10 @@
 #!/bin/bash
 
+source "$(dirname "$0")/projects.sh"
+
 BASE_DIR="$(pwd)"
-
-PROJECTS=(
-  "AdminConstructionAutomation"
-  "ConstructionAutomationApi"
-  "ConstructionAutomationFront"
-  "ConstructionAutomation.ReportService"
-  "errorLoggingConstruction"
-)
-
 BUILD_MODE=false
+
 if [[ "$1" == "build" ]]; then
   BUILD_MODE=true
   echo "Режим сборки: включен"
