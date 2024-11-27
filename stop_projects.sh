@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source "$(dirname "$0")/containers.sh"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/containers.sh"
 
 stop_and_remove_container() {
   local container_name="$1"
