@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "$(dirname "$0")/projects.sh"
+source "$(dirname "$0")/containers.sh"
 
 BASE_DIR="$(pwd)"
 BUILD_MODE=false
